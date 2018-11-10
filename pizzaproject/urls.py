@@ -19,9 +19,9 @@ from rest_framework import routers
 from pizza_app import views
 
 router = routers.DefaultRouter()
-router.register('pizzas', views.PizzaViewSet)
-router.register('customers', views.CustomerViewSet)
-router.register('orders', views.OrderViewSet)
+router.register('pizzas', views.PizzaViewSet, base_name='pizzas')
+router.register('customers', views.CustomerViewSet, base_name='customers')
+router.register('orders', views.OrderViewSet, base_name='orders')
 
 
 urlpatterns = [
