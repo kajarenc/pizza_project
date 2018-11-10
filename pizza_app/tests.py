@@ -23,7 +23,8 @@ class CustomerTests(APITestCase):
         self.pizza_name = 'Pepperoni'
         self.customer_first_name = 'John'
         self.customer_last_name = 'Galt'
-        self.customer_email = 'john.galt@gmail.com'
+        self.customer_email = 'john.galt@gmail.com',
+        self.order_address = '88 Colin P Kelly Jr St, San Francisco, CA 94107 United States'
     
     def test_create_customer(self):
         """
@@ -31,9 +32,9 @@ class CustomerTests(APITestCase):
         """
         url = reverse('customers-list')
         data = {
-            'first_name': 'John',
-            'last_name': 'Galt',
-            'email': 'john.galt@gmail.com'
+            'first_name': self.customer_first_name,
+            'last_name': self.customer_last_name,
+            'email': self.customer_email
         }
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -52,7 +53,8 @@ class CustomerTests(APITestCase):
         data = {
             'customer': customer.id,
             'pizza': pizza.id,
-            'size': 'small'
+            'size': 'small',
+            'address': self.order_address 
         }
         response = self.client.post(url, data, format='json')
         order_id = response.data['id']
@@ -69,6 +71,7 @@ class OrderTests(APITestCase):
         self.customer_first_name = 'John'
         self.customer_last_name = 'Galt'
         self.customer_email = 'john.galt@gmail.com'
+        self.order_address = '88 Colin P Kelly Jr St, San Francisco, CA 94107 United States'
 
     
     def test_create_order(self):

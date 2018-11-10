@@ -29,3 +29,4 @@ class Order(models.Model):
    pizza = models.ForeignKey(Pizza, null=True, on_delete=models.SET_NULL)
    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
    size = models.CharField(max_length=5, choices=PIZZA_SIZES)
+   address = models.CharField(max_length=256, default='Moscow, Russia')
