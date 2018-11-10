@@ -23,7 +23,7 @@ class CustomerTests(APITestCase):
         self.pizza_name = 'Pepperoni'
         self.customer_first_name = 'John'
         self.customer_last_name = 'Galt'
-        self.customer_email = 'john.galt@gmail.com',
+        self.customer_email = 'john.galt@gmail.com'
         self.order_address = '88 Colin P Kelly Jr St, San Francisco, CA 94107 United States'
     
     def test_create_customer(self):
